@@ -172,6 +172,6 @@ To contribute to this project:
     Make your changes
     Submit a pull request
 
-For any other information follow me on GitHub.
+
 
 
