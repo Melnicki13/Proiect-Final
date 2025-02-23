@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Inventory Items</h2>
+    
+    <div class="search-container">
+        <form action="{{ url_for('search') }}" method="GET">
+            <input type="text" name="query" placeholder="Search items...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Inventory Number</th>
+                <th>Company</th>
+                <th>Model</th>
+                <th>Purchase Year</th>
+                <th>Purchase Amount</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.inventory_number }}</td>
+                <td>{{ item.company }}</td>
+                <td>{{ item.model }}</td>
+                <td>{{ item.purchase_year }}</td>
+                <td>{{ item.purchase_amount }}</td>
+                <td>{{ item.department }}</td>
+                <td>
+                    {% if item.assigned_user_id %}
+                        Assigned to {{ item.assigned_to.username }}
+                    {% else %}
+                        Available
+                    {% endif %}
+                </td>
+                <td>
+                    {% if current_user.is_admin %}
+                        <a href="{{ url_for('delete_item', id=item.id) }}">Delete</a>
+                    {% endif %}
+                    {% if not item.assigned_user_id %}
+                        <a href="{{ url_for('assign_item', id=item.id) }}">Assign to me</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
