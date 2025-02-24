@@ -1,39 +1,41 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- Extinde template-ul de bază -->
 
 {% block content %}
 <div class="form-container">
     <h2>Add New Inventory Item</h2>
+    <!-- Formular pentru adăugarea unui nou item -->
     <form method="POST">
+                <!-- Număr inventar -->
         <div class="form-group">
             <label for="inventory_number">Inventory Number:</label>
             <input type="text" id="inventory_number" name="inventory_number" required>
         </div>
-
+        <!-- Firma producătoare -->
         <div class="form-group">
             <label for="company">Company:</label>
             <input type="text" id="company" name="company" required>
         </div>
-
+        <!-- Model -->
         <div class="form-group">
             <label for="model">Model:</label>
             <input type="text" id="model" name="model" required>
         </div>
-
+        <!-- Anul achiziției -->
         <div class="form-group">
             <label for="purchase_year">Purchase Year:</label>
             <input type="number" id="purchase_year" name="purchase_year" required>
         </div>
-
+        <!-- Suma de achiziție -->
         <div class="form-group">
             <label for="purchase_amount">Purchase Amount:</label>
             <input type="number" step="0.01" id="purchase_amount" name="purchase_amount" required>
         </div>
-
+        <!-- Departament -->
         <div class="form-group">
             <label for="department">Department:</label>
             <input type="text" id="department" name="department" required>
         </div>
-
+        <!-- Buton de submit -->
         <button type="submit">Add Item</button>
     </form>
 </div>

@@ -3,6 +3,8 @@
 {% block content %}
 <div class="form-container">
     <h2>Register New User</h2>
+
+     <!-- Afișare mesaje de eroare -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -10,25 +12,26 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-
+ <!-- Formular de înregistrare -->
     <form method="POST">
+                <!-- Username -->
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
-
+        <!-- Parolă -->
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-
+        <!-- Checkbox pentru rol de admin -->
         <div class="form-group checkbox-group">
             <label>
                 <input type="checkbox" name="is_admin">
                 Register as Administrator
             </label>
         </div>
-
+        <!-- Buton de submit -->
         <button type="submit">Register User</button>
     </form>
 </div>

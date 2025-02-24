@@ -1,4 +1,4 @@
-/* General styles */
+/* Stiluri generale */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #f5f5f5;
 }
 
-/* Navigation styles */
+/* Stiluri pentru navigare */
 nav {
     background-color: #333;
     padding: 15px;
@@ -20,7 +20,7 @@ nav a {
     padding: 5px 10px;
     border-radius: 3px;
 }
-
+/* Stiluri pentru Hover */
 nav a:hover {
     background-color: #555;
 }
@@ -41,7 +41,7 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* Form group styles */
+/* Stiluri pentru formulare */
 .form-group {
     margin-bottom: 20px;
 }
@@ -73,7 +73,7 @@ nav a:hover {
     margin-right: 10px;
 }
 
-/* Button styles */
+/* Stiluri pentru butoane */
 button {
     width: 100%;
     padding: 10px;
