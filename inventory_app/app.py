@@ -24,11 +24,11 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # Funcție necesară pentru Flask-Login
-@login_manager.user_loader
+@login_manager.user_loader  #Acesta este un decorator furnizat de Flask-Login
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Ruta principală - redirecționează către login
+# Ruta principală - redirecționează către pagina de login
 @app.route('/logout')
 @login_required
 def logout():
@@ -36,7 +36,8 @@ def logout():
     return redirect(url_for('login'))
 
 @app.route('/')
-def index():
+def index(): # index poate fi inlocuit cu orice functia ne trimite la
+    #pagina principala
     return redirect(url_for('login'))
 
 # Ruta pentru login
@@ -85,7 +86,7 @@ def register():
             flash('Username already exists')
             return redirect(url_for('register'))
 
-        # Creează noul utilizator
+        # Inregistram un nou utilizator
         try:
             user = User(
                 username=username,
@@ -96,8 +97,11 @@ def register():
             db.session.commit()
             flash('User registered successfully')
             return redirect(url_for('dashboard'))
-        except Exception as e:
-            db.session.rollback()
+        except Exception as e: # Exception este clasa de bază pentru toate erorile
+            # "as e" salvează eroarea într-o variabilă numită 'e'
+            #apare cand in blocul try sunt Erori de bază de date,Erori de rețea etc.
+            db.session.rollback() #Anulează toate modificările făcute
+            # în baza de date în sesiunea curentă
             flash('An error occurred while registering the user')
             return redirect(url_for('register'))
 
